@@ -1,15 +1,16 @@
-import { useState } from 'react'
 
-import './App.css'
+import "./App.css";
+// import Landing from "./pages/Landing/Landing";
+import Router from "./Router";
 
 function App() {
-  const [count, setCount] = useState(0)
+
 
   return (
     <>
-
+<Router />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
