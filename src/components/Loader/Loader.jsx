@@ -1,6 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import { FadeLoader } from "react-spinners";
-import LayOut from "../LayOut/LayOut";
 
 function Loader() {
   return (

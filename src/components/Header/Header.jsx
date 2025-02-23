@@ -4,8 +4,13 @@ import { BiCart } from "react-icons/bi";
 import headerStyle from "./Header.module.css";
 import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
+import { DataContext } from "../DataProvider/DataProvider";
+import { useContext } from "react";
 
 function Header() {
+  const [{ basket }, dispatch] = useContext(DataContext);
+  const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
+
   return (
     <>
       <section className={headerStyle.nav__wrapper}>
@@ -64,12 +69,13 @@ function Header() {
             {/* cart */}
             <Link to="/cart" className={headerStyle.cart}>
               <BiCart size={35} />
-              <span>0</span>
+              <span>{totalItem}</span> 
+                 {/* basket.length */}
             </Link>
           </div>
         </section>
+        <LowerHeader />
       </section>
-      <LowerHeader />
     </>
   );
 }

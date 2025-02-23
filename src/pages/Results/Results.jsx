@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import LayOut from "../../components/LayOut/LayOut";
 import { useParams } from "react-router-dom";
@@ -20,7 +21,7 @@ function Results() {
       try {
        let request = await axios.get(`${productUrl}/products/category/${categoryName}`)
           console.log(request);
-          setResults(results.data)
+          setResults(request.data)
           setIsLoading(false)
       } catch (error) {
         console.error(error);
@@ -31,7 +32,7 @@ function Results() {
   
   return (
     <LayOut>
-      <section>
+      <section className={styles.results__container}>
         <h1 style={{ padding: "2rem" }}>Results</h1>
         <p style={{ padding: "2rem" }}>Category / {categoryName}</p>
         <hr />
@@ -40,7 +41,7 @@ function Results() {
         ) : (
           <div className={styles.products__container}>
             {results?.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} renderAdd={true} />
             ))}
           </div>
         )}

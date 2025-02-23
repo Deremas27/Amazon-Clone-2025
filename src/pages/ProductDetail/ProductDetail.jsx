@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useEffect, useState } from "react";
 import LayOut from "../../components/LayOut/LayOut";
 import { useParams } from "react-router-dom";
@@ -27,7 +28,16 @@ function ProductDetail() {
 
   return (
     <LayOut>
-      {isLoading ? <Loader /> : <ProductCard product={products} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <ProductCard
+          product={products}
+          flex={true}
+          renderDisc={true}
+          renderAdd={true}
+        />
+      )}
     </LayOut>
   );
 }
