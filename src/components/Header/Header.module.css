@@ -3,6 +3,7 @@
   position: sticky;
   top: 0;
   z-index: 1;
+  overflow: hidden;
 }
 .header__container {
   background-color: #1a1a1a;
@@ -11,17 +12,17 @@
   align-items: center;
   color: white;
   height: 4.5rem;
-  width: 99%;
+  width: 100%;
 }
 
 .logo__container {
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 16rem;
+  max-width: 14rem;
 
   img {
-    width: 70%;
+    width: 80%;
     padding-top: 0.25rem;
     margin-left: 1.25rem;
     vertical-align: middle;
@@ -40,14 +41,20 @@
     font-style: 0.625rem;
   }
 }
+/* .order_span {
+  display: flex;
+  flex-direction: column;
+}
+.order_span span {
 
+} */
 .search {
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 0.625rem;
   overflow: hidden;
-  width: 100%;
+  /* width: 70%; */
   flex: 1;
 
   :focus-within {
@@ -67,6 +74,7 @@
   input {
     border: 1px solid white;
     width: 100%;
+    padding: 6px;
     margin-right: -2px;
   }
 
@@ -140,6 +148,7 @@
 
   ul {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 0.25rem;
     li {

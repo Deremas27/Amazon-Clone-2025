@@ -6,9 +6,10 @@ export const categoryImage = [
       "https://m.media-amazon.com/images/I/918nnfuP2GL.__AC_SX300_SY300_QL70_FMwebp_.jpg",
   },
   {
-    title: "Discover Fashion Trends",
+    title: "Ladies Jacket",
     name: "women's clothing",
-    imgLink: "https://m.media-amazon.com/images/I/71p45ymSU5L._AC_SY741_.jpg",
+    imgLink:
+      "https://m.media-amazon.com/images/I/71KaA5gcl5L._AC_UL480_FMwebp_QL65_.jpg",
   },
   {
     title: "Men's Clothing",

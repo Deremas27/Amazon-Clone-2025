@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./pages/Landing/Landing";
-import SignUp from "./pages/Auth/SignUp";
+import Auth from "./pages/Auth/Auth";
 import Payment from "./pages/Payment/Payment";
 import Orders from "./pages/Orders/Orders";
 import Cart from "./pages/Cart/Cart";
@@ -14,7 +14,7 @@ function Router() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/auth" element={<SignUp />} />
+          <Route path="/auth" element={<Auth />} />
           <Route path="/payment" element={<Payment />} />
           <Route path="/orders" element={<Orders />} />
           <Route path="/category/:categoryName" element={<Results />} />

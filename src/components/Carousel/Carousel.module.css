@@ -1,5 +1,7 @@
 .hero_img {
   position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .hero_img::before {

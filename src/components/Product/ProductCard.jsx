@@ -26,6 +26,10 @@ function ProductCard({ product, flex, renderDisc, renderAdd }) {
     });
   };
 
+  function truncate(str, n) {
+    return str?.length > n ? str.substr(0, n - 1) + "..." : str;
+  }
+
   return (
     <>
       <div
@@ -37,10 +41,10 @@ function ProductCard({ product, flex, renderDisc, renderAdd }) {
           <img src={image} alt="" />
         </Link>
         <div>
-          <h3>{title}</h3>
+          {flex ? <h3>{title}</h3> : <h3> {truncate(title, 41)}</h3>}
           {renderDisc && (
             <div style={{ maxWidth: "800px", fontSize: "1.25rem" }}>
-              {description}
+                <p>{description}</p>
             </div>
           )}
           <div className={cardStyles.rating}>

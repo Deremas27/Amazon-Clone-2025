@@ -1,49 +1,49 @@
 import { SlLocationPin } from "react-icons/sl";
 import { BsSearch } from "react-icons/bs";
 import { BiCart } from "react-icons/bi";
+import "../../assets/images/css/bootstrap.css";
 import headerStyle from "./Header.module.css";
 import LowerHeader from "./LowerHeader";
 import { Link } from "react-router-dom";
 import { DataContext } from "../DataProvider/DataProvider";
 import { useContext } from "react";
+import { auth } from "../../Utility/firebase";
 
 function Header() {
-  const [{ basket }, dispatch] = useContext(DataContext);
+  const [{ basket, user }, dispatch] = useContext(DataContext);
   const totalItem = basket?.reduce((amount, item) => item.amount + amount, 0);
 
   return (
     <>
       <section className={headerStyle.nav__wrapper}>
-        <section className={headerStyle.header__container}>
-          <div className={headerStyle.logo__container}>
-            {/* logo */}
+        <section className={`${headerStyle.header__container} row`}>
+          <div className={`${headerStyle.logo__container} `}>
             <Link to="/">
               <img
                 src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
                 alt="Amazon logo"
               />
             </Link>
-            {/* delivery */}
+
             <div className={headerStyle.delivery}>
               <span>
                 <SlLocationPin />
               </span>
-              <div>
-                <p>Delivered to</p>
-                <span>Ethiopia</span>
+              <div className={headerStyle.order_span}>
+                <span style={{ fontSize: "16px" }}>Delivered to</span>
+                <span> Ethiopia</span>
               </div>
             </div>
           </div>
-          <div className={headerStyle.search}>
-            {/* search */}
+          <div className={`${headerStyle.search} `}>
             <select name="" id="">
               <option value="">All</option>
             </select>
             <input type="text" value="" id="" placeholder="Search product" />
-            <BsSearch size={25} />
+            <BsSearch size={40} />
           </div>
-          {/* Right side */}
-          <div className={headerStyle.order__cotainer}>
+
+          <div className={`${headerStyle.order__cotainer} `}>
             <Link to="#" className={headerStyle.language}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Flag_of_the_United_States_%28Pantone%29.svg/383px-Flag_of_the_United_States_%28Pantone%29.svg.png"
@@ -54,23 +54,30 @@ function Header() {
               </select>
             </Link>
 
-            {/* Three components */}
-            <Link to="/auth">
+            <Link to={!user && "/auth"}>
               <div>
-                <p>Sign In</p>
-                <span>Account & Lists</span>
+                {user ? (
+                  <>
+                    <p>Hello {user.email?.split("@")[0]}</p>
+                    <span onClick={() => auth.signOut()}>Sign Out</span>
+                  </>
+                ) : (
+                  <>
+                    <p>Hello, Sign In</p>
+                    <span>Account & Lists</span>
+                  </>
+                )}
               </div>
             </Link>
-            {/* orders */}
+
             <Link to="/orders">
               <p>Returns</p>
               <span>& Orders</span>
             </Link>
-            {/* cart */}
+
             <Link to="/cart" className={headerStyle.cart}>
               <BiCart size={35} />
-              <span>{totalItem}</span> 
-                 {/* basket.length */}
+              <span>{totalItem}</span>
             </Link>
           </div>
         </section>
